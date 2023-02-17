@@ -1,0 +1,7 @@
+/target
+Cargo.lock
+/single-binary-producer/target
+/single-binary-producer/Cargo.lock
+!/single-binary-producer/_public_dir_/README.md
+/single-binary-producer/_public_dir_/*
+/.static-file-http-server-cache

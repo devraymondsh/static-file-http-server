@@ -1,0 +1,54 @@
+[package]
+authors = ["Mahdi Sharifi <devraymondsh@gmail.com>"]
+categories = ["Web programming", "HTTP server"]
+description = "A simple and zero-configuration command-line http server for static file hosting"
+edition = "2021"
+keywords = ["static", "webserver"]
+license = "MIT"
+name = "static-file-http-server"
+readme = "README.md"
+repository = "https://github.com/devraymondsh/static-file-http-server"
+version = "0.1.0"
+
+[dependencies]
+
+[dependencies.include_directory]
+version = "0.1.1"
+default-features = false
+
+[dependencies.reqwest]
+version = "0.11.14"
+default-features = false
+
+[dependencies.open]
+version = "3.2.0"
+default-features = false
+
+[dependencies.once_cell]
+version = "1.17.1"
+default-features = false
+features = ["std"]
+
+[dependencies.new_mime_guess]
+version = "4.0.1"
+default-features = false
+
+[dependencies.axum]
+version = "0.6.6"
+default-features = false
+features = ["tokio", "http1"]
+
+[dependencies.clap]
+version = "4.1.4"
+default-features = false
+features = ["std", "suggestions", "help", "usage", "color", "derive"]
+
+[dependencies.tokio]
+version = "1.25.0"
+default-features = false
+features = ["rt-multi-thread", "macros", "fs"]
+
+[profile.release]
+lto = true
+opt-level = "z"
+incremental = false
