@@ -18,7 +18,7 @@ pub struct Args {
 
     /// Address to bind, for example: 0.0.0.0:80.
     /// You may need administrator permissions for binding on port 80 based on your OS.
-    #[arg(short, long, default_value_t = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), 80))]
+    #[arg(short, long, default_value_t = SocketAddr::new(IpAddr::V4(Ipv4Addr::new(127, 0, 0, 1)), 8085))]
     pub addr: SocketAddr,
 
     /// Controling CORS via the 'Access-Control-Allow-Origin' header.
