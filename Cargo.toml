@@ -8,17 +8,13 @@ license = "MIT"
 name = "static-file-http-server"
 readme = "README.md"
 repository = "https://github.com/devraymondsh/static-file-http-server"
-version = "0.1.3"
+version = "0.1.12"
 
 [dependencies]
 
 [dependencies.static-file-http-server-macros]
-version = "^0.1.0"
+version = "^0.1.12"
 path = "./macros"
-
-[dependencies.include_directory]
-version = "0.1.1"
-default-features = false
 
 [dependencies.reqwest]
 version = "0.11.14"
@@ -51,16 +47,6 @@ features = ["std", "suggestions", "help", "usage", "color", "derive"]
 version = "1.25.0"
 default-features = false
 features = ["rt-multi-thread", "macros", "fs"]
-
-[build-dependencies.reqwest]
-version = "0.11.14"
-default-features = false
-features = ["native-tls"]
-
-[build-dependencies.tokio]
-version = "1.25.0"
-default-features = false
-features = ["rt", "macros", "fs"]
 
 [profile.release]
 lto = true
