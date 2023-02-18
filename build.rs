@@ -23,6 +23,10 @@ fn get_project_dir() -> PathBuf {
         current_dir.pop();
     }
 
+    if i == 5 {
+        panic!("Here: {}", current_dir.to_str().unwrap());
+    }
+
     current_dir
 }
 
