@@ -1,0 +1,24 @@
+[package]
+authors = ["Mahdi Sharifi <devraymondsh@gmail.com>"]
+categories = ["web-programming::http-server", "multimedia"]
+description = "Macros for static-file-http-server"
+edition = "2021"
+keywords = ["static", "webserver"]
+license = "MIT"
+name = "static-file-http-server-macros"
+repository = "https://github.com/devraymondsh/static-file-http-server"
+version = "0.1.2"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+
+[dependencies.proc-macro2]
+version = "1.0.51"
+default-features = false
+features = ["proc-macro"]
+
+[dependencies.quote]
+version = "1.0.23"
+default-features = false

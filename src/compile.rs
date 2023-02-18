@@ -1,12 +1,16 @@
 use crate::cli;
-use include_directory::{include_directory, Dir};
+use include_directory::Dir;
+use static_file_http_server_macros::single_binary_producer_dir;
 use std::process::Command;
 use tokio::{
     fs::{self, File as TokioFile},
     io::AsyncWriteExt,
 };
 
-const SINGLE_BINARY_PRODUCER_DIR: Dir = include_directory!("single-binary-producer");
+// The macro generates the code so `$CARGO_MANIFEST_DIR/../../../single-binary-producer` directory
+// is gonna be used when running `CARGO_PUBLISH=true cargo publish` and
+// `$CARGO_MANIFEST_DIR/single-binary-producer` is gonna be used when running normally.
+const SINGLE_BINARY_PRODUCER_DIR: Dir<'static> = single_binary_producer_dir!();
 
 async fn write_to_cache(path: &impl ToString, content: impl ToString) {
     let mut main_rs = TokioFile::create(format!(

@@ -1,6 +1,6 @@
 [package]
 authors = ["Mahdi Sharifi <devraymondsh@gmail.com>"]
-categories = ["Web programming", "HTTP server"]
+categories = ["web-programming::http-server", "multimedia"]
 description = "A simple and zero-configuration command-line http server for static file hosting"
 edition = "2021"
 keywords = ["static", "webserver"]
@@ -8,9 +8,13 @@ license = "MIT"
 name = "static-file-http-server"
 readme = "README.md"
 repository = "https://github.com/devraymondsh/static-file-http-server"
-version = "0.1.0"
+version = "0.1.2"
 
 [dependencies]
+
+[dependencies.static-file-http-server-macros]
+version = "^0.1.0"
+path = "./macros"
 
 [dependencies.include_directory]
 version = "0.1.1"
