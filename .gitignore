@@ -7,3 +7,4 @@ Cargo.lock
 /.static-file-http-server-cache
 /macros/target
 /macros/Cargo.lock
+static-file-http-server

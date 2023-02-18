@@ -1,16 +1,13 @@
 use crate::cli;
-use include_directory::Dir;
-use static_file_http_server_macros::single_binary_producer_dir;
+use static_file_http_server_macros::{get_sbp_cargo_toml, get_sbp_main_rs};
 use std::process::Command;
 use tokio::{
     fs::{self, File as TokioFile},
     io::AsyncWriteExt,
 };
 
-// The macro generates the code so `$CARGO_MANIFEST_DIR/../../../single-binary-producer` directory
-// is gonna be used when running `CARGO_PUBLISH=true cargo publish` and
-// `$CARGO_MANIFEST_DIR/single-binary-producer` is gonna be used when running normally.
-const SINGLE_BINARY_PRODUCER_DIR: Dir<'static> = single_binary_producer_dir!();
+get_sbp_main_rs!("SBP_MAIN_RS");
+get_sbp_cargo_toml!("SBP_CARGO_TOML");
 
 async fn write_to_cache(path: &impl ToString, content: impl ToString) {
     let mut main_rs = TokioFile::create(format!(
@@ -25,28 +22,12 @@ async fn write_to_cache(path: &impl ToString, content: impl ToString) {
         .await
         .unwrap();
 }
-async fn copy_from_single_binary_producer_to_cache(path: impl ToString) {
-    write_to_cache(
-        &path,
-        SINGLE_BINARY_PRODUCER_DIR
-            .get_file(path.to_string())
-            .unwrap()
-            .contents_utf8()
-            .unwrap(),
-    )
-    .await;
-}
 
 async fn create_the_sample_project(args: &cli::Args) {
-    copy_from_single_binary_producer_to_cache("Cargo.toml").await;
+    write_to_cache(&"Cargo.toml", SBP_CARGO_TOML).await;
 
     let main_rs_path = "src/main.rs";
-    let mut main_rs = SINGLE_BINARY_PRODUCER_DIR
-        .get_file(main_rs_path)
-        .unwrap()
-        .contents_utf8()
-        .unwrap()
-        .to_string();
+    let mut main_rs = SBP_MAIN_RS.to_string();
     main_rs = main_rs.replace("127.0.0.1:8080", args.addr.to_string().as_str());
     main_rs = main_rs.replace("3600", args.cache.to_string().as_str());
 

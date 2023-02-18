@@ -7,12 +7,21 @@ keywords = ["static", "webserver"]
 license = "MIT"
 name = "static-file-http-server-macros"
 repository = "https://github.com/devraymondsh/static-file-http-server"
-version = "0.1.2"
+version = "0.1.12"
 
 [lib]
 proc-macro = true
 
 [dependencies]
+
+[dependencies.escape_string]
+version = "0.1.2"
+default-features = false
+
+[dependencies.reqwest]
+version = "0.11.14"
+default-features = false
+features = ["native-tls", "blocking"]
 
 [dependencies.proc-macro2]
 version = "1.0.51"
