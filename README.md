@@ -4,12 +4,12 @@
 <br />
 
 ## Installation:
+### Using npm:
+`npm install --global static-file-http-server`
+
 ### Using cargo:
 
 `cargo install static-file-http-server`
-
-## Using npm:
-`npm install --global static-file-http-server`
 
 <br />
 
