@@ -1,0 +1,41 @@
+#!/usr/bin/env node
+
+const fs = require("fs");
+const path = require("path");
+const { exec } = require("child_process");
+
+const cargoDir = path.dirname("$HOME" + ".cargo");
+
+// check if directory exists
+if (fs.existsSync(cargoDir)) {
+  //   console.log("Cargo found.");
+} else {
+  const setCargo = 'PATH="/$HOME/.cargo/bin:${PATH}"';
+  console.log("Installing deps [cargo].");
+
+  exec(
+    `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y && ${setCargo}`,
+    (error) => {
+      if (error) {
+        console.log(
+          "curl failed! Curl may not be installed on the OS. View https://curl.se/download.html to install."
+        );
+        console.log(error);
+      }
+    }
+  );
+}
+    
+const features = process.env.npm_config_features ? `--features ${process.env.npm_config_features.replace(",", " ")}` : ""; 
+
+console.log(`Installing and compiling static-file-http-server 0.1.13 ${features} ...`);
+exec(`cargo install static-file-http-server --vers 0.1.13 ${features}`, (error, stdout, stderr) => {
+  console.log(stdout);
+  if (error || stderr) {
+    console.log(error || stderr);
+  } else {
+    console.log("install finished!");
+  }
+});
+
+    
