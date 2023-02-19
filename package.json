@@ -1,6 +1,6 @@
 {
   "name": "static-file-http-server",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "A simple and zero-configuration command-line http server for static file hosting",
   "main": "start.js",
   "directories": {

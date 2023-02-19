@@ -28,8 +28,8 @@ if (fs.existsSync(cargoDir)) {
     
 const features = process.env.npm_config_features ? `--features ${process.env.npm_config_features.replace(",", " ")}` : ""; 
 
-console.log(`Installing and compiling static-file-http-server 0.1.13 ${features} ...`);
-exec(`cargo install static-file-http-server --vers 0.1.13 ${features}`, (error, stdout, stderr) => {
+console.log(`Installing and compiling static-file-http-server 0.1.14 ${features} ...`);
+exec(`cargo install static-file-http-server --vers 0.1.14 ${features}`, (error, stdout, stderr) => {
   console.log(stdout);
   if (error || stderr) {
     console.log(error || stderr);
