@@ -3,11 +3,6 @@
 
 <br />
 
-## Usage with npx:
-### Using npx you can run the script without installing it:
-
-`npx static-file-http-server [options] [path]`
-
 ## Installation:
 ### Using cargo:
 

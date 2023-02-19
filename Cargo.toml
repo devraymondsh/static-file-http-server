@@ -8,7 +8,7 @@ license = "MIT"
 name = "static-file-http-server"
 readme = "README.md"
 repository = "https://github.com/devraymondsh/static-file-http-server"
-version = "0.1.13"
+version = "0.1.14"
 
 [dependencies]
 
