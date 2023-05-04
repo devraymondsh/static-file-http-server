@@ -62,6 +62,7 @@ async fn run_cargo(current_dir: impl ToString) {
 
     println!("Compiling... This can take a while based on your hardware and project size.");
     let _ = Command::new("cargo")
+        .env("RUSTFLAGS", "-C target-cpu=native")
         .args(["clean", "-p", "single-binary-producer"])
         .current_dir(current_dir.to_string())
         .output()
